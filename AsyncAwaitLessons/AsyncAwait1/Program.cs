@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
@@ -10,7 +12,7 @@ namespace csharpwednesdays
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             //for (int i = 0; i < int.MaxValue; i++)
             //{
@@ -30,22 +32,31 @@ namespace csharpwednesdays
             //    Thread.Yield();
             //});
             //t.Wait();
+            //ThreadPool.SetMinThreads()
+
+            //var stream = new FileStream("", FileMode.Open);
+            //stream.BeginRead()
 
             var addresses = new[] {"http://seznam.cz", "http://idnes.cz", "http://novinky.cz"};
 
-            foreach (var address in addresses)
+            //Parallel.ForEach(addresses, address =>
+            //{
+            //    var result = Load(address);
+            //    Console.WriteLine(result);
+            //});
+
+            foreach (var item in addresses)
             {
-                var result = Load(address);
+                var result = await Load(item);
                 Console.WriteLine(result);
             }
-
             Console.ReadLine();
         }
 
-        private static string Load(string address)
+        private static async Task<string> Load(string address)
         {
             HttpWebRequest request = WebRequest.CreateHttp(address);
-            using (WebResponse response = request.GetResponse())
+            using (WebResponse response = await request.GetResponseAsync())
             {
                 return response.ContentType;
             }
