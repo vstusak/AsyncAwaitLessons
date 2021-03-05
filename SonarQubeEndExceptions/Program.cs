@@ -34,17 +34,18 @@ namespace SonarQubeEndExceptions
         public static void Main(string[] args)
         {
             TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
-            //try
-            //{
-                MyAsyncMethod(string.Empty);
-            Console.ReadLine();
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(ex.Message);
-            //}
+            try
+            {
+            //MyAsyncMethod(string.Empty);
+            MyAsyncVoidMethod();
+            //Console.ReadLine();
+            //GC.Collect();
+            //GC.WaitForPendingFinalizers();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             Console.ReadLine();
         }
 
@@ -60,5 +61,10 @@ namespace SonarQubeEndExceptions
             throw new Exception("Hello from My Async method");
         }
 
+        public static async void MyAsyncVoidMethod()
+        {
+            Console.WriteLine("My Async void method");
+            throw new Exception("Hello from My Async void method");
+        }
     }
 }
