@@ -20,13 +20,40 @@ namespace WindowsFormsSyncContext
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            //SynchronizationContext.Current
+            //var ctx = SynchronizationContext.Current;
             //Thread.Sleep(5000);
 
+            await Workload().ConfigureAwait(false);
+
+            //ctx.Post(_ => {
+            //    button1.Text = "Hello Dolly";
+            //}, null);
+
+            int i = 0;
+
             await Task.Delay(5000).ConfigureAwait(false);
+
+            int j = 0;
+
+            await Task.Delay(5000).ConfigureAwait(false);
+
+
+
+
+
+
             
-            button1.Text = "Hello Dolly";
 
         }
+
+
+        private async Task Workload()
+        {
+            int x = 0;
+            await Task.Delay(5000);
+            int y = 0;
+        }
+
+
     }
 }

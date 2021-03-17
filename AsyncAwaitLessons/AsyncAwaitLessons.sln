@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwait1", "AsyncAwait1\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsSyncContext", "WindowsFormsSyncContext\WindowsFormsSyncContext.csproj", "{8FA0391C-51BB-4182-8BB9-5A1A6BBA733B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwaitLambdaExp", "AsyncAwaitLambdaExp\AsyncAwaitLambdaExp.csproj", "{551E3593-A2E2-438F-93F0-E628B9BDC1DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8FA0391C-51BB-4182-8BB9-5A1A6BBA733B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FA0391C-51BB-4182-8BB9-5A1A6BBA733B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FA0391C-51BB-4182-8BB9-5A1A6BBA733B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{551E3593-A2E2-438F-93F0-E628B9BDC1DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{551E3593-A2E2-438F-93F0-E628B9BDC1DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{551E3593-A2E2-438F-93F0-E628B9BDC1DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{551E3593-A2E2-438F-93F0-E628B9BDC1DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
