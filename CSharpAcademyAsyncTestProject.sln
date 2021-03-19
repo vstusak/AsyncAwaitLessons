@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncAwaitLambda", "AsyncAw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SonarQubeEndExceptions", "SonarQubeEndExceptions\SonarQubeEndExceptions.csproj", "{41D89CB5-2DC6-4BB0-B0F8-528AB02F4AAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwaitLocks", "AsyncAwaitLocks\AsyncAwaitLocks.csproj", "{75B8A14E-2DFD-471D-B377-1DB99ABEE906}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncAwaitLocks", "AsyncAwaitLocks\AsyncAwaitLocks.csproj", "{75B8A14E-2DFD-471D-B377-1DB99ABEE906}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhenAllWhenAny", "WhenAllWhenAny\WhenAllWhenAny.csproj", "{15327A8E-2636-4F63-A67A-52D34F018DBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{75B8A14E-2DFD-471D-B377-1DB99ABEE906}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75B8A14E-2DFD-471D-B377-1DB99ABEE906}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75B8A14E-2DFD-471D-B377-1DB99ABEE906}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15327A8E-2636-4F63-A67A-52D34F018DBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15327A8E-2636-4F63-A67A-52D34F018DBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15327A8E-2636-4F63-A67A-52D34F018DBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15327A8E-2636-4F63-A67A-52D34F018DBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
