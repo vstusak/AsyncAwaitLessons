@@ -9,9 +9,9 @@ namespace AsyncAwaitLambdaExp
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            WrapWithTime(async () =>
+            await WrapWithTime(async () =>
             {
                 await Workload();
             });
@@ -23,10 +23,10 @@ namespace AsyncAwaitLambdaExp
             Console.ReadLine();
         }
 
-        private static void WrapWithTime(Action p)
+        private static async Task WrapWithTime(Func<Task> p)
         {
             Console.WriteLine(DateTime.Now);
-            p();
+            await p();
             Console.WriteLine(DateTime.Now);
         }
 

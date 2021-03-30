@@ -18,40 +18,41 @@ namespace WindowsFormsSyncContext
             InitializeComponent();
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            //var ctx = SynchronizationContext.Current;
-            //Thread.Sleep(5000);
+            ////var ctx = SynchronizationContext.Current;
+            ////Thread.Sleep(5000);
 
-            await Workload().ConfigureAwait(false);
+            //await Workload().ConfigureAwait(false);
 
-            //ctx.Post(_ => {
-            //    button1.Text = "Hello Dolly";
-            //}, null);
+            ////ctx.Post(_ => {
+            ////    button1.Text = "Hello Dolly";
+            ////}, null);
 
-            int i = 0;
+            //int i = 0;
 
-            await Task.Delay(5000).ConfigureAwait(false);
+            //await Task.Delay(5000).ConfigureAwait(false);
 
-            int j = 0;
+            //int j = 0;
 
-            await Task.Delay(5000).ConfigureAwait(false);
-
-
-
-
+            //await Task.Delay(5000).ConfigureAwait(false);
+            string s = "";
+            Task.Run(async () => { s = await Workload(); }).Wait();
 
 
-            
+            button1.Text = s;
+
+
 
         }
 
 
-        private async Task Workload()
+        private async Task<string> Workload()
         {
             int x = 0;
             await Task.Delay(5000);
             int y = 0;
+            return "x";
         }
 
 
