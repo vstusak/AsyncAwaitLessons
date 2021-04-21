@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +9,9 @@ namespace AsyncAwaitLocks
     {
 
         private readonly object lockingObject = new object();
+        //private readonly ManualResetEvent manualResetEvent = new ManualResetEvent(false);
+        private readonly SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1, 1);
+        private int counter;
 
         public Form1()
         {
@@ -24,7 +21,10 @@ namespace AsyncAwaitLocks
         private async void button1_Click(object sender, EventArgs e)
         {
             await Workload();
-            button1.Text = "asdf";
+
+            counter++;
+
+            button1.Text = counter.ToString();
         }
 
         private async Task Workload()
@@ -34,11 +34,15 @@ namespace AsyncAwaitLocks
             //    await Task.Delay(4000);
             //}
 
-            Monitor.Enter(lockingObject);
+            //Monitor.Enter(lockingObject);
 
-            await Task.Delay(4000);
+            await semaphoreSlim.WaitAsync();
 
-            Monitor.Exit(lockingObject);
+            await Task.Delay(4000).ConfigureAwait(false);
+
+            semaphoreSlim.Release();
+
+            //Monitor.Exit(lockingObject);
         }
     }
 }
