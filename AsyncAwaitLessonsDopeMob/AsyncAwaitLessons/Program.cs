@@ -11,7 +11,7 @@ namespace AsyncAwaitLessons
 {
     class Program
     {
-        static void Main(string[] args)
+        static async void Main(string[] args)
         {
 
             //Task t = Task.Run(() =>
@@ -34,23 +34,30 @@ namespace AsyncAwaitLessons
 
             //}
 
-            Parallel.ForEach(urls, url =>
+            ThreadPool.SetMinThreads(100,100);
+            ServicePointManager.DefaultConnectionLimit = int.MaxValue;
+
+            Parallel.ForEach(urls, async url =>
             {
-                var result = LoadUrl(url);
+                var result = await LoadUrl(url);
                 Console.WriteLine(url + result);
             });
 
-
             Console.ReadLine();
-
         }
+        
 
-        private static string LoadUrl(string url)
+        private static async Task<string> LoadUrl(string url)
         {
             var request = WebRequest.CreateHttp(url);
-            var response = request.GetResponse();
+            WebResponse response = await GetResponse(request);
             var contentType = response.ContentType;
             return contentType;
+        }
+
+        private static async Task<WebResponse> GetResponse(HttpWebRequest request)
+        {
+            return await request.GetResponseAsync();
         }
     }
 }
