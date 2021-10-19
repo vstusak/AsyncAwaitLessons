@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31005.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31808.319
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwaitLessons", "AsyncAwaitLessons\AsyncAwaitLessons.csproj", "{EA57300C-6C3E-4B39-AA50-7068349707EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PuppyKiller", "PuppyKiller\PuppyKiller.csproj", "{12A2225E-CECB-4BB6-BE0D-3BBE4080689D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EA57300C-6C3E-4B39-AA50-7068349707EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA57300C-6C3E-4B39-AA50-7068349707EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA57300C-6C3E-4B39-AA50-7068349707EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12A2225E-CECB-4BB6-BE0D-3BBE4080689D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12A2225E-CECB-4BB6-BE0D-3BBE4080689D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12A2225E-CECB-4BB6-BE0D-3BBE4080689D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12A2225E-CECB-4BB6-BE0D-3BBE4080689D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
