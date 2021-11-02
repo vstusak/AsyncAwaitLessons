@@ -9,41 +9,48 @@ namespace AsyncLambda
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
+        //static void Main(string[] args)
         {
-            WrapWithTime(() => { Workload(); });
+            var i = 3;
+            await WrapWithTime(async () => { await Workload(i); }); //async call for async code
+            //WrapWithTime(async () => { await Workload(i); }).Wait(); //sync call for async code
+            //_ = WrapWithTime(async () => { await Workload(i); }); //sync call for async code
+
             Console.ReadKey();
         }
 
-        private static void Workload()
+        private static async Task Workload(int seconds)
         {
-            Thread.Sleep(5000);
+            //Thread.Sleep(5000); //Loading from I/O, no processor operation
+            await Task.Delay(TimeSpan.FromSeconds(seconds)); //Loading from I/O, but using async method
+
             Console.WriteLine("Workload finished. ");
         }
 
-        private static void WrapWithTime(Action a)
+        private static async Task WrapWithTime(Func<Task> a)
         {
             Console.WriteLine(DateTime.Now);
-            a();
+            await a();
             Console.WriteLine(DateTime.Now);
         }
 
-    //    private static void CollectionExample()
-    //    {
-    //        var people = new List<Person>();
-    //        var petres = people.Where(NewMethod());
-    //    }
+        //    private static void CollectionExample()
+        //    {
+        //        var people = new List<Person>();
+        //        var petres = people.Where(NewMethod());
+        //    }
 
-    //    private static Func<Person, bool> NewMethod()
-    //    {
-    //        return person => person.Name == "Petr";
-    //    }
-    //}
+        //    private static Func<Person, bool> NewMethod()
+        //    {
+        //        return person => person.Name == "Petr";
+        //    }
+        //}
 
-    //internal class Person
-    //{
-    //    public string Name { get; set; }
-    //    public string Surname { get; set; }
+        //internal class Person
+        //{
+        //    public string Name { get; set; }
+        //    public string Surname { get; set; }
 
     }
 }
