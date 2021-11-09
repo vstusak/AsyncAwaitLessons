@@ -21,25 +21,42 @@ namespace PuppyKiller
 
         private async void button1_ClickAsync(object sender, EventArgs e)
         {
-            var context = SynchronizationContext.Current;
-            //Thread.Sleep(10000);
-            await Task.Delay(5000).ConfigureAwait(false);
-            int i = 0;
-            await Task.Delay(5000).ConfigureAwait(false);
-            int j = 0;
-            await Task.Delay(5000).ConfigureAwait(false);
-            //button1.Text = "Number one is finished";
-            context.Post(_ => button1.Text = "New",null);
+            //ConfigureAwait example
+
+            //var context = SynchronizationContext.Current;
+            ////Thread.Sleep(10000);
+            //await Task.Delay(5000).ConfigureAwait(false);
+            //int i = 0;
+            //await Task.Delay(5000).ConfigureAwait(false);
+            //int j = 0;
+            //await Task.Delay(5000).ConfigureAwait(false);
+            ////button1.Text = "Number one is finished";
+            //context.Post(_ => button1.Text = "New",null);
+
+            await GetStuffAsync();
+
+            button1.Text = "Number one is finished";
         }
 
         private async Task<string> GetStuffAsync()
         {
-            using (var fileStream = new FileStream(String.Empty, FileMode.Open))
-            {
-                var buffer = new byte[1024];
-                await fileStream.ReadAsync(buffer,0,1024);
-                return buffer.ToString();
-            }
+            //using (var fileStream = new FileStream(String.Empty, FileMode.Open))
+            //{
+            //    var buffer = new byte[1024];
+            //    await fileStream.ReadAsync(buffer,0,1024);
+            //    return buffer.ToString();
+            //}
+
+            //lock (this)
+            //{
+
+            //}
+
+            Monitor.Enter(this);
+            await Task.Delay(5000).ConfigureAwait(false);
+            Monitor.Exit(this);
+
+            return String.Empty;
         }
     }
 }
