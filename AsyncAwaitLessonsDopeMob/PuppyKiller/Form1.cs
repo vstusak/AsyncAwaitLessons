@@ -52,9 +52,16 @@ namespace PuppyKiller
 
             //}
 
-            Monitor.Enter(this);
+            //var @object = new object();
+            //Monitor.Enter(@object);
+            //await Task.Delay(5000).ConfigureAwait(false);
+            //Monitor.Exit(@object);
+
+            var semafor = new SemaphoreSlim(1, 1);
+            await semafor.WaitAsync();
             await Task.Delay(5000).ConfigureAwait(false);
-            Monitor.Exit(this);
+            semafor.Release();
+
 
             return String.Empty;
         }
