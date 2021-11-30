@@ -65,5 +65,19 @@ namespace PuppyKiller
 
             return String.Empty;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //LoadImage().Wait();
+            //var awaiter = LoadImage().GetAwaiter();
+            //awaiter.GetResult();
+
+            Task.Run(async () => await LoadImage());
+        }
+
+        private async Task LoadImage()
+        {
+            await Task.Delay(5000);
+        }
     }
 }
