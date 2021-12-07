@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace TaskWhenAnyWhenAll
             var tasks = new List<Task>();
             for (int i = 0; i < 50; i++)
             {
-                tasks.Add(WaitForSeconds(i));
+                tasks.Add(WaitForSeconds(i*100));
             }
 
             await Task.WhenAll(tasks);
@@ -20,8 +21,24 @@ namespace TaskWhenAnyWhenAll
 
         private static async Task WaitForSeconds(int taskNumber)
         {
-            await Task.Delay(taskNumber);
-            Console.WriteLine($"Finished {taskNumber};Thread: {Thread.CurrentThread.ManagedThreadId}");
+            try
+            {
+                await Task.Delay(taskNumber);
+
+                throw new Exception("task number is empty");
+
+                var text = File.ReadAllText(string.Empty);
+
+                Console.WriteLine($"Finished {taskNumber};Thread: {Thread.CurrentThread.ManagedThreadId}");
+            }
+            
+            catch(Exception ex)
+            {
+                //throw new Exception("This is the catch block");
+                // NEVER!!! throw a !!!new!!! exception in a catch block
+                // throw;
+                throw new Exception("Welcome to the Catch block", ex);
+            }
         }
     }
 }
