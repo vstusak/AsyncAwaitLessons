@@ -3,11 +3,14 @@ using System.IO;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections.Concurrent;
 
 namespace TaskWhenAnyWhenAll
 {
     internal class Program
     {
+        private static readonly ConcurrentDictionary<string, int> dict = new ConcurrentDictionary<string, int>();
+
         static async Task Main(string[] args)
         {
             var tasks = new List<Task>();
@@ -16,9 +19,12 @@ namespace TaskWhenAnyWhenAll
                 tasks.Add(WaitForSeconds(i * 100));
             }
 
+            //Second parameter can be CancellationToken
+            Task.Run(() => WaitForSeconds(100));
+
             try
             {
-                Task.WhenAny(tasks).Wait();
+                await Task.WhenAll(tasks).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -34,6 +40,11 @@ namespace TaskWhenAnyWhenAll
                     Console.WriteLine($"exception: {ex.Message}");
                 }
             }
+
+            foreach (var item in dict)
+            {
+                Console.WriteLine($"{item.Key} - {item.Value}");
+            }
         }
 
         private static async Task WaitForSeconds(int taskNumber)
@@ -41,8 +52,8 @@ namespace TaskWhenAnyWhenAll
             //try
             //{
             await Task.Delay(taskNumber);
-
-            throw new Exception("task number is empty");
+            dict.TryAdd($"{taskNumber}", taskNumber);
+            throw new Exception($"task number is empty {taskNumber}");
 
             var text = File.ReadAllText(string.Empty);
 
